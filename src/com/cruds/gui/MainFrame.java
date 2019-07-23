@@ -5,6 +5,7 @@
  */
 package com.cruds.gui;
 
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -231,7 +232,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(298, Short.MAX_VALUE))
         );
 
-        mainPanel.add(panelAddBook, "card3");
+        mainPanel.add(panelAddBook, "panelAddBook");
+        panelAddBook.getAccessibleContext().setAccessibleName("");
+        panelAddBook.getAccessibleContext().setAccessibleDescription("");
 
         panelSeachBook.setPreferredSize(new java.awt.Dimension(500, 399));
 
@@ -293,7 +296,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        mainPanel.add(panelSeachBook, "card2");
+        mainPanel.add(panelSeachBook, "panelSearchBook");
 
         jScrollPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -328,7 +331,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addContainerGap(162, Short.MAX_VALUE)))
         );
 
-        mainPanel.add(panelListBooks, "card7");
+        mainPanel.add(panelListBooks, "panelListBooks");
 
         txtSearchBook.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -434,11 +437,12 @@ public class MainFrame extends javax.swing.JFrame {
             panelIssueBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelIssueBookLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(panelIssueBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ComboBoxSearchBook, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSearchBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearchBookIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelIssueBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSearchBookIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelIssueBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ComboBoxSearchBook, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearchBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchBookLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
@@ -455,7 +459,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        mainPanel.add(panelIssueBook, "card5");
+        mainPanel.add(panelIssueBook, "panelIssueBook");
 
         scrollPaneIssuedBooks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -501,7 +505,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(178, Short.MAX_VALUE))
         );
 
-        mainPanel.add(panelIssuedBooks, "card7");
+        mainPanel.add(panelIssuedBooks, "panelIssuedBooks");
 
         scrollPaneIssuedBooks1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -536,7 +540,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addContainerGap(120, Short.MAX_VALUE)))
         );
 
-        mainPanel.add(panelReturnToday, "card7");
+        mainPanel.add(panelReturnToday, "panelReturnToday");
 
         jMenuBar1.setBackground(new java.awt.Color(153, 153, 255));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
@@ -548,6 +552,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu1.setText("Add Book");
+        jMenu1.setFocusTraversalPolicyProvider(true);
         jMenu1.setIconTextGap(10);
         jMenu1.setInheritsPopupMenu(true);
         jMenuBar1.add(jMenu1);
@@ -572,6 +577,9 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu2.setText("Search Book");
         jMenu2.setAutoscrolls(true);
+        jMenu2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMenu2.setIconTextGap(15);
+        jMenu2.setMargin(new java.awt.Insets(0, 10, 0, 10));
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -619,7 +627,8 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddBookActionPerformed
-        new PanelAddBook();
+       CardLayout card = (CardLayout)mainPanel.getLayout();
+       card.show(mainPanel, "panelAddBook");
     }//GEN-LAST:event_btnAddBookActionPerformed
 
     private void ComboBoxSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxSearchActionPerformed
@@ -647,23 +656,28 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReturnActionPerformed
 
     private void btnSearchBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchBookActionPerformed
-        // TODO add your handling code here:
+       CardLayout card = (CardLayout)mainPanel.getLayout();
+       card.show(mainPanel, "panelSearchBook");
     }//GEN-LAST:event_btnSearchBookActionPerformed
 
     private void btnListBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListBooksActionPerformed
-        // TODO add your handling code here:
+       CardLayout card = (CardLayout)mainPanel.getLayout();
+       card.show(mainPanel, "panelListBooks");
     }//GEN-LAST:event_btnListBooksActionPerformed
 
     private void btnIssueBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIssueBookActionPerformed
-        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+       card.show(mainPanel, "panelIssueBook");
     }//GEN-LAST:event_btnIssueBookActionPerformed
 
     private void btnListIssuedBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListIssuedBooksActionPerformed
-        // TODO add your handling code here:
+       CardLayout card = (CardLayout)mainPanel.getLayout();
+       card.show(mainPanel, "panelIssuedBooks");
     }//GEN-LAST:event_btnListIssuedBooksActionPerformed
 
     private void btnReturnTodayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnTodayActionPerformed
-        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+       card.show(mainPanel, "panelReturnToday");
     }//GEN-LAST:event_btnReturnTodayActionPerformed
 
     /**
@@ -727,8 +741,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable jTable2;
