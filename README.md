@@ -16,7 +16,7 @@
 
 ### Database Design
 
-Book Table  | 
+Book Table  | ------------------
 ----------- | ------------------
 Book ISBN	| Primary key
 Book Title	| Varchar
@@ -24,18 +24,18 @@ Category	| Varchar
 No of Books	| int
 
 
-Author Table	| 
+Author Table	| ----------------------
 ------------ 	| ----------------------	 
 Author Name	 	| Varchar
 Author Mail Id	| Varchar
 Book ISBN		| Foreign KEY, References Book
 
-Student Table | 
-------------- | -------------- 
+Student Table | --------------------
+------------- | --------------------
 USN			  | Varchar, Primary Key
 Name		  | Varchar
 
-Book ISSUE Table | 
+Book ISSUE Table | --------------------------------
 ---------------	 | --------------------------------
 Issue ID		 | Auto Increment, Primary Key
 USN				 | Foreign Key, References Student
@@ -43,7 +43,7 @@ Issued Date		 | Date
 Return Date		 | Date
 Book ISBN		 | Foreign Key, References Book 
 
-ADMIN Table		| 
+ADMIN Table		| --------------------
 --------------- | --------------------
 Admin Id		| Varchar, Primary key
 Password		| Varchar
