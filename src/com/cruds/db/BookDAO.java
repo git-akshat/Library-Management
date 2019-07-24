@@ -12,7 +12,9 @@ import com.cruds.model.Author;
 import com.cruds.model.Book;
 import com.cruds.model.Issue;
 import com.cruds.model.Student;
+import java.util.Calendar;
 import java.util.Vector;
+import java.util.concurrent.TimeUnit;
 import javax.swing.table.DefaultTableModel;
 
 public class BookDAO {
@@ -197,7 +199,7 @@ public class BookDAO {
 	
 	public DefaultTableModel getByCategory(String category)
 	{
-		String sql = "select b.book_isbn, b.book_title, b.category, b.no_of_books, a.author_name from book b, author a where a.book_isbn = b.book_isbn and LOWER(b.category) = ?";
+		String sql = "select b.book_isbn, b.book_title, b.category, b.no_of_books, a.author_name from book b, author a where a.book_isbn = b.book_isbn and LOWER(b.category) like ?";
                 Vector<String> colNames = new Vector<>();
 		colNames.add("Book ISBN");
 		colNames.add("Book Title");
@@ -210,7 +212,7 @@ public class BookDAO {
 		try(Connection conn = DBConnectionManager.getConnection())
 		{
 			PreparedStatement ps = conn.prepareStatement(sql);
-                        ps.setString(1, category.toLowerCase());
+                        ps.setString(1, "%" + category.toLowerCase() + "%");
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs != null && rs.next())
@@ -232,7 +234,7 @@ public class BookDAO {
 	
 	public DefaultTableModel getByAuthor(String name)
 	{
-		String sql = "select b.book_isbn, b.book_title, b.category, b.no_of_books, a.author_name from book b, author a where b.book_isbn = a.book_isbn and LOWER(a.author_name) = ?";
+		String sql = "select b.book_isbn, b.book_title, b.category, b.no_of_books, a.author_name from book b, author a where b.book_isbn = a.book_isbn and LOWER(a.author_name) like ?";
 		Book b = null;
                 Vector<String> colNames = new Vector<>();
 		colNames.add("Book ISBN");
@@ -246,7 +248,7 @@ public class BookDAO {
 		try(Connection conn = DBConnectionManager.getConnection())
 		{
 			PreparedStatement ps = conn.prepareStatement(sql);
-                        ps.setString(1, name.toLowerCase());
+                        ps.setString(1, "%" + name.toLowerCase() + "%");
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs != null && rs.next())
@@ -360,34 +362,52 @@ public class BookDAO {
 		return rows > 0;
 	}
 	
-	public boolean listBookByUsn(String usn)
+	public DefaultTableModel listBookByUsn(String usn)
 	{
-		String sql = "select b.book_title, s.name, bi.return_date from book b, student s, book_issue bi where b.book_isbn = bi.book_isbn and bi.usn = s.usn and LOWER(bi.usn) = ?";
-		boolean flag = false;
+		String sql = "select bi.issue_id, bi.usn, s.name, bi.issue_date, bi.return_date, bi.book_isbn  from book b, student s, book_issue bi where b.book_isbn = bi.book_isbn and bi.usn = s.usn";
+                Vector<String> colNames = new Vector<>();
+		colNames.add("ID");
+		colNames.add("USN");
+                colNames.add("Student Name");
+                colNames.add("Issue Date");
+                colNames.add("Return Date");
+                colNames.add("ISBN");
 		
+		Vector<Vector<String>> data = new Vector<>();
+		
+		
+                if(usn != null)
+                {
+                    sql += " and LOWER(bi.usn) = ?";
+                }
 		try(Connection conn = DBConnectionManager.getConnection())
 		{
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, usn.toLowerCase());
+                        if(usn != null)
+                        {
+                            ps.setString(1, usn.toLowerCase());
+                        }
 			
 			ResultSet rs = ps.executeQuery();
-			
-			if(rs != null)
-			{
-				flag = true;
-				System.out.printf("%20s \t %15s \t %10s", "Book Title", "Student Name", "Return Date");
-			}
+                   
 			
 			while(rs != null && rs.next())
 			{
-				System.out.printf("\n%20s \t %15s \t %10s", rs.getString(1), rs.getString(2), (java.util.Date)rs.getDate(3));
+				Vector<String> row = new Vector<>();
+				row.add(String.valueOf(rs.getInt(1)));
+				row.add(rs.getString(2));
+                                row.add(rs.getString(3));
+                                row.add(String.valueOf(rs.getDate(4)));
+                                row.add(String.valueOf(rs.getDate(5)));
+                                row.add(rs.getString(6));
+				data.add(row);
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
 		
-		return flag;
+		return new DefaultTableModel(data, colNames);
 	}
 	
 	public boolean getBookToReturn(Date curDate)
@@ -405,8 +425,6 @@ public class BookDAO {
 		}
 		
 		return rows > 0;
-	}
-        
-        
+	}                 
 
 }
