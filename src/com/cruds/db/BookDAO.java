@@ -364,6 +364,44 @@ public class BookDAO {
 	
 	public DefaultTableModel listBookByUsn(String usn)
 	{
+		String sql = "select bi.issue_id, bi.usn, s.name, bi.issue_date, bi.return_date, bi.book_isbn  from book b, student s, book_issue bi where b.book_isbn = bi.book_isbn and bi.usn = s.usn and LOWER(bi.usn) = ?";
+                Vector<String> colNames = new Vector<>();
+		colNames.add("ID");
+		colNames.add("USN");
+                colNames.add("Student Name");
+                colNames.add("Issue Date");
+                colNames.add("Return Date");
+                colNames.add("ISBN");
+		
+		Vector<Vector<String>> data = new Vector<>();
+		
+		try(Connection conn = DBConnectionManager.getConnection())
+		{
+			PreparedStatement ps = conn.prepareStatement(sql);
+                        ps.setString(1, usn);
+                        ResultSet rs = ps.executeQuery();
+                        
+                        while(rs != null && rs.next())
+			{
+				Vector<String> row = new Vector<>();
+				row.add(String.valueOf(rs.getInt(1)));
+				row.add(rs.getString(2));
+                                row.add(rs.getString(3));
+                                row.add(String.valueOf(rs.getDate(4)));
+                                row.add(String.valueOf(rs.getDate(5)));
+                                row.add(rs.getString(6));
+				data.add(row);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return new DefaultTableModel(data, colNames);
+	}
+        
+        public DefaultTableModel listIssuedBooks()
+	{
 		String sql = "select bi.issue_id, bi.usn, s.name, bi.issue_date, bi.return_date, bi.book_isbn  from book b, student s, book_issue bi where b.book_isbn = bi.book_isbn and bi.usn = s.usn";
                 Vector<String> colNames = new Vector<>();
 		colNames.add("ID");
@@ -375,22 +413,11 @@ public class BookDAO {
 		
 		Vector<Vector<String>> data = new Vector<>();
 		
-		
-                if(usn != null)
-                {
-                    sql += " and LOWER(bi.usn) = ?";
-                }
 		try(Connection conn = DBConnectionManager.getConnection())
 		{
 			PreparedStatement ps = conn.prepareStatement(sql);
-                        if(usn != null)
-                        {
-                            ps.setString(1, usn.toLowerCase());
-                        }
-			
-			ResultSet rs = ps.executeQuery();
+                        ResultSet rs = ps.executeQuery();
                    
-			
 			while(rs != null && rs.next())
 			{
 				Vector<String> row = new Vector<>();
@@ -410,21 +437,43 @@ public class BookDAO {
 		return new DefaultTableModel(data, colNames);
 	}
 	
-	public boolean getBookToReturn(Date curDate)
+	public DefaultTableModel getBookToReturn(Date curDate)
 	{
-		String sql = "select b.book_isbn, b.book_title, b.category from book b, book_issue bi where bi.book_isbn = b.book_isbn and return_date = ?";
-		int rows = 0;
-		java.sql.Date cDate = new java.sql.Date(curDate.getTime());
+		String sql = "select bi.issue_id, bi.usn, s.name, bi.issue_date, bi.return_date, bi.book_isbn  from book b, student s, book_issue bi where b.book_isbn = bi.book_isbn and bi.usn = s.usn and bi.return_date = ?";
+                Vector<String> colNames = new Vector<>();
+		colNames.add("ID");
+		colNames.add("USN");
+                colNames.add("Student Name");
+                colNames.add("Issue Date");
+                colNames.add("Return Date");
+                colNames.add("ISBN");
+		
+		Vector<Vector<String>> data = new Vector<>();
+                java.sql.Date cdate = new java.sql.Date(curDate.getTime());
 		
 		try(Connection conn = DBConnectionManager.getConnection())
 		{
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setDate(1, cDate);
+                        ps.setDate(1, cdate);
+                        ResultSet rs = ps.executeQuery();
+                        
+                        while(rs != null && rs.next())
+			{
+				Vector<String> row = new Vector<>();
+				row.add(String.valueOf(rs.getInt(1)));
+				row.add(rs.getString(2));
+                                row.add(rs.getString(3));
+                                row.add(String.valueOf(rs.getDate(4)));
+                                row.add(String.valueOf(rs.getDate(5)));
+                                row.add(rs.getString(6));
+				data.add(row);
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		} 
 		
-		return rows > 0;
+		return new DefaultTableModel(data, colNames);
 	}                 
 
 }

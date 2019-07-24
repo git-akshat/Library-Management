@@ -79,8 +79,8 @@ public class MainFrame extends javax.swing.JFrame {
         txtUsn = new javax.swing.JTextField();
         btnSearchByUsn = new javax.swing.JButton();
         panelReturnToday = new javax.swing.JPanel();
-        scrollPaneIssuedBooks1 = new javax.swing.JScrollPane();
-        jTable7 = new javax.swing.JTable();
+        scrollPaneReturnToday = new javax.swing.JScrollPane();
+        returnTodayTable = new javax.swing.JTable();
         panelAddBook = new javax.swing.JPanel();
         isbnLabel = new javax.swing.JLabel();
         txtISBN = new javax.swing.JTextField();
@@ -96,13 +96,7 @@ public class MainFrame extends javax.swing.JFrame {
         txtAuthorName = new javax.swing.JTextField();
         authorEmailLabel = new javax.swing.JLabel();
         txtAuthorEmail = new javax.swing.JTextField();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        btnLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Library");
@@ -501,17 +495,19 @@ public class MainFrame extends javax.swing.JFrame {
 
         mainPanel.add(panelIssuedBooks, "panelIssuedBooks");
 
-        scrollPaneIssuedBooks1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        scrollPaneReturnToday.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jTable7.setModel(new javax.swing.table.DefaultTableModel(
+        returnTodayTable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        returnTodayTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Issue ID", "Book ISBN", "USN", "Issue Date", "Return Date"
+                "Issue ID", "USN", "Issue Date", "Return Date", "Book ISBN"
             }
         ));
-        scrollPaneIssuedBooks1.setViewportView(jTable7);
+        returnTodayTable.setRowHeight(20);
+        scrollPaneReturnToday.setViewportView(returnTodayTable);
 
         javax.swing.GroupLayout panelReturnTodayLayout = new javax.swing.GroupLayout(panelReturnToday);
         panelReturnToday.setLayout(panelReturnTodayLayout);
@@ -520,18 +516,18 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 906, Short.MAX_VALUE)
             .addGroup(panelReturnTodayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelReturnTodayLayout.createSequentialGroup()
-                    .addGap(54, 54, 54)
-                    .addComponent(scrollPaneIssuedBooks1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(318, Short.MAX_VALUE)))
+                    .addGap(61, 61, 61)
+                    .addComponent(scrollPaneReturnToday, javax.swing.GroupLayout.PREFERRED_SIZE, 783, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(62, Short.MAX_VALUE)))
         );
         panelReturnTodayLayout.setVerticalGroup(
             panelReturnTodayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 612, Short.MAX_VALUE)
             .addGroup(panelReturnTodayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelReturnTodayLayout.createSequentialGroup()
-                    .addGap(119, 119, 119)
-                    .addComponent(scrollPaneIssuedBooks1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(128, Short.MAX_VALUE)))
+                    .addGap(123, 123, 123)
+                    .addComponent(scrollPaneReturnToday, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(124, Short.MAX_VALUE)))
         );
 
         mainPanel.add(panelReturnToday, "panelReturnToday");
@@ -652,53 +648,20 @@ public class MainFrame extends javax.swing.JFrame {
         panelAddBook.getAccessibleContext().setAccessibleName("");
         panelAddBook.getAccessibleContext().setAccessibleDescription("");
 
-        jMenuBar1.setBackground(new java.awt.Color(153, 153, 255));
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuBar1.setDoubleBuffered(true);
-        jMenuBar1.setFocusCycleRoot(true);
-        jMenuBar1.setFocusTraversalPolicyProvider(true);
-        jMenuBar1.setMargin(new java.awt.Insets(10, 10, 0, 0));
-
-        jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu1.setText("Add Book");
-        jMenu1.setFocusTraversalPolicyProvider(true);
-        jMenu1.setIconTextGap(10);
-        jMenu1.setInheritsPopupMenu(true);
-        jMenuBar1.add(jMenu1);
-
-        jMenu3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu3.setText("List Books");
-        jMenu3.setIconTextGap(10);
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu4.setText("Issue Book");
-        jMenuBar1.add(jMenu4);
-
-        jMenu5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu5.setText("Return Book");
-        jMenuBar1.add(jMenu5);
-
-        jMenu6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu6.setText("Today's Return");
-        jMenuBar1.add(jMenu6);
-
-        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu2.setText("Search Book");
-        jMenu2.setAutoscrolls(true);
-        jMenu2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenu2.setIconTextGap(15);
-        jMenu2.setMargin(new java.awt.Insets(0, 10, 0, 10));
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        btnLogout.setBackground(new java.awt.Color(204, 204, 204));
+        btnLogout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAddBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -709,12 +672,18 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(btnReturnToday, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addContainerGap()
+                .addComponent(btnLogout)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -850,11 +819,24 @@ public class MainFrame extends javax.swing.JFrame {
     private void btnListIssuedBooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListIssuedBooksActionPerformed
        CardLayout card = (CardLayout)mainPanel.getLayout();
        card.show(mainPanel, "panelIssuedBooks");
+       issuedBooksTable.setModel(dao.listIssuedBooks());
+       if(issuedBooksTable.getModel().getRowCount() == 0)
+       {
+            JOptionPane.showMessageDialog(panelIssueBook, "No record Found", "No record", JOptionPane.ERROR_MESSAGE);
+       }
     }//GEN-LAST:event_btnListIssuedBooksActionPerformed
 
     private void btnReturnTodayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnTodayActionPerformed
        CardLayout card = (CardLayout)mainPanel.getLayout();
        card.show(mainPanel, "panelReturnToday");
+       
+       Calendar cal = Calendar.getInstance();
+       Date curDate = cal.getTime();
+       returnTodayTable.setModel(dao.getBookToReturn(curDate));
+       if(returnTodayTable.getModel().getRowCount() == 0)
+       {
+           JOptionPane.showMessageDialog(panelReturnToday, "No book to return Today", "Message", JOptionPane.INFORMATION_MESSAGE);
+       }
     }//GEN-LAST:event_btnReturnTodayActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -965,6 +947,11 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSearchByUsnActionPerformed
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        this.dispose();
+        new LoginFrame().setVisible(true);
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1016,6 +1003,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnIssueBook;
     private javax.swing.JButton btnListBooks;
     private javax.swing.JButton btnListIssuedBooks;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnReturnToday;
     private javax.swing.JButton btnSearch;
@@ -1028,14 +1016,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxSearchBy;
     private javax.swing.JLabel isbnLabel;
     private javax.swing.JTable issuedBooksTable;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTable jTable7;
     private javax.swing.JLabel labelUsn2;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel panelAddBook;
@@ -1045,9 +1025,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel panelReturnToday;
     private javax.swing.JPanel panelSearchBook;
     private javax.swing.JLabel quantityLabel;
+    private javax.swing.JTable returnTodayTable;
     private javax.swing.JScrollPane scrollPaneBookAuthor;
     private javax.swing.JScrollPane scrollPaneIssuedBooks;
-    private javax.swing.JScrollPane scrollPaneIssuedBooks1;
+    private javax.swing.JScrollPane scrollPaneReturnToday;
     private javax.swing.JLabel searchBookLabel;
     private javax.swing.JScrollPane searchScrollPane;
     private javax.swing.JLabel searchStudentLabel;
