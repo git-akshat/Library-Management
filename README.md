@@ -68,48 +68,48 @@ Password		|
 </br>
 </br>
 
-** Add new Book
+** 1. Add new Book **
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/add_book.png)
 
 </br>
 </br>
 
-**Search Book
+** 2. Search Book **
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/search_book.png)
 
 </br>
 </br>
 
-** List all Books
+** 3. List all Books
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/list_all_books.png)
 
 </br>
 </br>
 
-** Issue Book -1
+** 4. Issue Book -1 **
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/issue_book.png)
 
 </br>
 </br>
 
-** Issue Book -2
+** 5. Issue Book -2 **
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/issue_book_2.png)
 
 </br>
 </br>
 
-** List Issued Books
+** 6. List Issued Books **
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/list_issued_books.png)
 
 </br>
 </br>
 
-** List Books to be returned on current Date
+** 7. List Books to be returned on current Date **
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/book_to_return.png)
