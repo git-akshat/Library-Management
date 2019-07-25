@@ -23,6 +23,7 @@ Book Title	| Varchar
 Category	| Varchar
 No of Books	| int
 
+</br>
 
 Author Table	| ----------------------
 ------------ 	| ----------------------	 
@@ -30,14 +31,14 @@ Author Name	 	| Varchar
 Author Mail Id	| Varchar
 Book ISBN		| Foreign KEY, References Book
 
-
+</br>
 
 Student Table | --------------------
 ------------- | --------------------
 USN			  | Varchar, Primary Key
 Name		  | Varchar
 
-
+</br>
 
 Book ISSUE Table | --------------------------------
 ---------------	 | --------------------------------
@@ -47,20 +48,29 @@ Issued Date		 | Date
 Return Date		 | Date
 Book ISBN		 | Foreign Key, References Book 
 
-
+</br>
 
 ADMIN Table		| --------------------
 --------------- | --------------------
 Admin Id		| Varchar, Primary key
 Password		| 
 
+</br>
+
 ### Screenshots
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/login1.png)
+</br>
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/add_book.png)
+</br>
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/search_book.png)
+</br>
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/list_all_books.png)
+</br>
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/issue_book.png)
+</br>
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/issue_book_2.png)
+</br>
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/list_issued_books.png)
+</br>
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/book_to_return.png)
