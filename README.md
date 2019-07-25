@@ -56,21 +56,44 @@ Admin Id		| Varchar, Primary key
 Password		| 
 
 </br>
+</br>
+
 
 ### Screenshots
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/login1.png)
+
 </br>
+</br>
+
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/add_book.png)
+
 </br>
+</br>
+
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/search_book.png)
+
 </br>
+</br>
+
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/list_all_books.png)
+
 </br>
+</br>
+
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/issue_book.png)
+
 </br>
+</br>
+
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/issue_book_2.png)
+
 </br>
+</br>
+
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/list_issued_books.png)
+
 </br>
+</br>
+
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/book_to_return.png)
