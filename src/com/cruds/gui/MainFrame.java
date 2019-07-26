@@ -280,9 +280,18 @@ public class MainFrame extends javax.swing.JFrame {
         bookAuthorTable.setRowHeight(18);
         scrollPaneBookAuthor.setViewportView(bookAuthorTable);
         if (bookAuthorTable.getColumnModel().getColumnCount() > 0) {
-            bookAuthorTable.getColumnModel().getColumn(0).setPreferredWidth(20);
-            bookAuthorTable.getColumnModel().getColumn(1).setPreferredWidth(100);
-            bookAuthorTable.getColumnModel().getColumn(3).setPreferredWidth(20);
+            bookAuthorTable.getColumnModel().getColumn(0).setMinWidth(50);
+            bookAuthorTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+            bookAuthorTable.getColumnModel().getColumn(0).setMaxWidth(50);
+            bookAuthorTable.getColumnModel().getColumn(1).setMinWidth(200);
+            bookAuthorTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+            bookAuthorTable.getColumnModel().getColumn(1).setMaxWidth(300);
+            bookAuthorTable.getColumnModel().getColumn(2).setMinWidth(50);
+            bookAuthorTable.getColumnModel().getColumn(2).setPreferredWidth(80);
+            bookAuthorTable.getColumnModel().getColumn(2).setMaxWidth(100);
+            bookAuthorTable.getColumnModel().getColumn(3).setMinWidth(50);
+            bookAuthorTable.getColumnModel().getColumn(3).setPreferredWidth(50);
+            bookAuthorTable.getColumnModel().getColumn(3).setMaxWidth(50);
         }
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1001,8 +1010,21 @@ public class MainFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(panelAddBook, "Fields can't be empty.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        int numBooks;
+        try{
+            numBooks = Integer.parseInt(q);
+            if(numBooks <= 0)
+            {
+                throw new Exception();
+            }
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(panelAddBook, "Please enter valid quantity", "Invalid Quantity", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
-        int numBooks = Integer.parseInt(q);
+        
         
         if( dao.addBook(new Book(isbn, title, category, numBooks)) && dao.addAuthor(new Author(name, email, isbn)) )
         {
