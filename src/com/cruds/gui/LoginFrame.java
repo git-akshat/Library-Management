@@ -126,9 +126,10 @@ public class LoginFrame extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String id = txtAdminId.getText().trim();
         String password = String.valueOf(txtPassword.getPassword()).trim();
-        if(id.length() == 0 && password.length() == 0)
+        if(id.length() == 0 || password.length() == 0)
         {
             JOptionPane.showMessageDialog(panelLogin, "Please enter Email and password", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         AdminDAO dao = new AdminDAO();
         if(dao.isValidAdmin(new Admin(id, password)))
@@ -141,6 +142,7 @@ public class LoginFrame extends javax.swing.JFrame {
         else
         {
             JOptionPane.showMessageDialog(panelLogin, "Invalid Login!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

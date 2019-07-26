@@ -3,15 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Valar%20Morghulis/Documents/NetBeansProjects/LibraryManagement/src/com/cruds/gui/DialogAddStudent.java</file>
             <file>file:/C:/Users/Valar%20Morghulis/Documents/NetBeansProjects/LibraryManagement/src/com/cruds/db/BookDAO.java</file>
             <file>file:/C:/Users/Valar%20Morghulis/Documents/NetBeansProjects/LibraryManagement/src/com/cruds/gui/MainFrame.java</file>
-            <file>file:/C:/Users/Valar%20Morghulis/Documents/NetBeansProjects/LibraryManagement/src/com/cruds/gui/LoginFrame.java</file>
-            <file>file:/C:/Users/Valar%20Morghulis/Documents/NetBeansProjects/LibraryManagement/src/com/cruds/model/Author.java</file>
-            <file>file:/C:/Users/Valar%20Morghulis/Documents/NetBeansProjects/LibraryManagement/src/com/cruds/db/TestDBConnection.java</file>
-            <file>file:/C:/Users/Valar%20Morghulis/Documents/NetBeansProjects/LibraryManagement/src/com/cruds/model/Book.java</file>
-            <file>file:/C:/Users/Valar%20Morghulis/Documents/NetBeansProjects/LibraryManagement/src/com/cruds/db/DBConnectionManager.java</file>
-            <file>file:/C:/Users/Valar%20Morghulis/Documents/NetBeansProjects/LibraryManagement/src/com/cruds/model/Issue.java</file>
         </group>
     </open-files>
 </project-private>
