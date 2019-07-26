@@ -15,6 +15,8 @@ import com.cruds.model.Student;
 import java.util.Calendar;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 public class BookDAO {
@@ -340,26 +342,31 @@ public class BookDAO {
 	public boolean issueBook(Issue bi)
 	{
 		String sql = "insert into book_issue(issue_id, usn, issue_date, return_date, book_isbn) values(?, ?, ?, ?, ?)";
+                String sqlCount = "update book set no_of_books = no_of_books - 1 where book_isbn = ?";
 		int rows = 0;
+                int rowsCount = 0;
 		java.sql.Date idate = new java.sql.Date(bi.getIssueDate().getTime());
 		java.sql.Date rdate = new java.sql.Date(bi.getReturnDate().getTime());
 		
 		try(Connection conn = DBConnectionManager.getConnection())
 		{
-			PreparedStatement ps = conn.prepareStatement(sql);
+			PreparedStatement psCount = conn.prepareStatement(sqlCount);
+                        psCount.setString(1, bi.getBook_isbn());
+                        rowsCount = psCount.executeUpdate();
+                        
+                        PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, bi.getId());
 			ps.setString(2, bi.getUsn());
 			ps.setDate(3, idate);
 			ps.setDate(4, rdate);
 			ps.setString(5, bi.getBook_isbn());
-			
 			rows = ps.executeUpdate();
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return rows > 0;
+		return rows > 0 && rowsCount > 0;
 	}
 	
 	public DefaultTableModel listBookByUsn(String usn)
@@ -475,5 +482,33 @@ public class BookDAO {
 		
 		return new DefaultTableModel(data, colNames);
 	}                 
+        
+        public boolean returnBook(int id, String isbn)
+        {
+            String sql = "Delete from book_issue where issue_id = ? ";
+            
+            String sqlCount = "update book set no_of_books = no_of_books+1 where book_isbn = ? ";
+            
+            int rows = 0;
+            int rowsCount = 0;
+            
+            try(Connection conn = DBConnectionManager.getConnection())
+            {
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setInt(1, id);
+                rows = ps.executeUpdate();
+                
+                PreparedStatement psCount = conn.prepareStatement(sqlCount);
+                psCount.setString(1, isbn);
+                rowsCount = psCount.executeUpdate();
+                
+                
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            
+            return ((rows > 0) && (rowsCount > 0));
+        }
+        
 
 }

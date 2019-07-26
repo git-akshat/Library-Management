@@ -125,9 +125,9 @@ public class LoginFrame extends javax.swing.JFrame {
        System.out.println(String.valueOf(txtPassword.getPassword()));
         if(txtAdminId.getText().trim().equals("admin") && String.valueOf(txtPassword.getPassword()).equals("123456"))
         {
+            loggedIn = true;
             System.out.println("Logged in successfully");
             new MainFrame().setVisible(true);
-            //MainFrame.main(new String[] {});
             this.dispose();
         }
         else
@@ -169,6 +169,8 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    public static boolean loggedIn = false;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelAdmin;
