@@ -1,5 +1,7 @@
 package com.cruds.gui;
 
+import com.cruds.db.AdminDAO;
+import com.cruds.model.Admin;
 import javax.swing.JOptionPane;
 
 
@@ -122,8 +124,14 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAdminIdActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-       System.out.println(String.valueOf(txtPassword.getPassword()));
-        if(txtAdminId.getText().trim().equals("admin") && String.valueOf(txtPassword.getPassword()).equals("123456"))
+        String id = txtAdminId.getText().trim();
+        String password = String.valueOf(txtPassword.getPassword()).trim();
+        if(id.length() == 0 && password.length() == 0)
+        {
+            JOptionPane.showMessageDialog(panelLogin, "Please enter Email and password", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        AdminDAO dao = new AdminDAO();
+        if(dao.isValidAdmin(new Admin(id, password)))
         {
             loggedIn = true;
             System.out.println("Logged in successfully");

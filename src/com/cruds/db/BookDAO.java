@@ -371,9 +371,10 @@ public class BookDAO {
 	
 	public DefaultTableModel listBookByUsn(String usn)
 	{
-		String sql = "select bi.issue_id, bi.usn, s.name, bi.issue_date, bi.return_date, bi.book_isbn  from book b, student s, book_issue bi where b.book_isbn = bi.book_isbn and bi.usn = s.usn and LOWER(bi.usn) = ?";
+		String sql = "select bi.issue_id, b.book_title, bi.usn, s.name, bi.issue_date, bi.return_date, bi.book_isbn  from book b, student s, book_issue bi where b.book_isbn = bi.book_isbn and bi.usn = s.usn and LOWER(bi.usn) = ?";
                 Vector<String> colNames = new Vector<>();
 		colNames.add("ID");
+                colNames.add("Book Title");
 		colNames.add("USN");
                 colNames.add("Student Name");
                 colNames.add("Issue Date");
@@ -394,9 +395,10 @@ public class BookDAO {
 				row.add(String.valueOf(rs.getInt(1)));
 				row.add(rs.getString(2));
                                 row.add(rs.getString(3));
-                                row.add(String.valueOf(rs.getDate(4)));
+                                row.add(rs.getString(4));
                                 row.add(String.valueOf(rs.getDate(5)));
-                                row.add(rs.getString(6));
+                                row.add(String.valueOf(rs.getDate(6)));
+                                row.add(rs.getString(7));
 				data.add(row);
 			}
 			
@@ -409,9 +411,10 @@ public class BookDAO {
         
         public DefaultTableModel listIssuedBooks()
 	{
-		String sql = "select bi.issue_id, bi.usn, s.name, bi.issue_date, bi.return_date, bi.book_isbn  from book b, student s, book_issue bi where b.book_isbn = bi.book_isbn and bi.usn = s.usn";
+		String sql = "select bi.issue_id, b.book_title, bi.usn, s.name, bi.issue_date, bi.return_date, bi.book_isbn  from book b, student s, book_issue bi where b.book_isbn = bi.book_isbn and bi.usn = s.usn";
                 Vector<String> colNames = new Vector<>();
 		colNames.add("ID");
+                colNames.add("Book Title");
 		colNames.add("USN");
                 colNames.add("Student Name");
                 colNames.add("Issue Date");
@@ -431,9 +434,10 @@ public class BookDAO {
 				row.add(String.valueOf(rs.getInt(1)));
 				row.add(rs.getString(2));
                                 row.add(rs.getString(3));
-                                row.add(String.valueOf(rs.getDate(4)));
+                                row.add(rs.getString(4));
                                 row.add(String.valueOf(rs.getDate(5)));
-                                row.add(rs.getString(6));
+                                row.add(String.valueOf(rs.getDate(6)));
+                                row.add(rs.getString(7));
 				data.add(row);
 			}
 			
@@ -446,9 +450,10 @@ public class BookDAO {
 	
 	public DefaultTableModel getBookToReturn(Date curDate)
 	{
-		String sql = "select bi.issue_id, bi.usn, s.name, bi.issue_date, bi.return_date, bi.book_isbn  from book b, student s, book_issue bi where b.book_isbn = bi.book_isbn and bi.usn = s.usn and bi.return_date = ?";
+		String sql = "select bi.issue_id, b.book_title, bi.usn, s.name, bi.issue_date, bi.return_date, bi.book_isbn  from book b, student s, book_issue bi where b.book_isbn = bi.book_isbn and bi.usn = s.usn and bi.return_date = ?";
                 Vector<String> colNames = new Vector<>();
 		colNames.add("ID");
+                colNames.add("Book Title");
 		colNames.add("USN");
                 colNames.add("Student Name");
                 colNames.add("Issue Date");
@@ -470,9 +475,10 @@ public class BookDAO {
 				row.add(String.valueOf(rs.getInt(1)));
 				row.add(rs.getString(2));
                                 row.add(rs.getString(3));
-                                row.add(String.valueOf(rs.getDate(4)));
+                                row.add(rs.getString(4));
                                 row.add(String.valueOf(rs.getDate(5)));
-                                row.add(rs.getString(6));
+                                row.add(String.valueOf(rs.getDate(6)));
+                                row.add(rs.getString(7));
 				data.add(row);
 			}
 			
@@ -506,8 +512,37 @@ public class BookDAO {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-            
             return ((rows > 0) && (rowsCount > 0));
+        }
+        
+        public String[] getAllCategory()
+        {
+            String sql = "Select unique(category) from book";
+            List<String> list = new ArrayList<>();
+            list.add("Select");
+            try(Connection conn = DBConnectionManager.getConnection())
+            {
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                
+                
+                while(rs != null && rs.next())
+		{
+                    list.add(rs.getString(1));
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            String[] category = new String[list.size()];
+            
+            for(int i=0; i<list.size();i++)
+            {
+                category[i] = list.get(i);
+            }
+                
+            return category;
         }
         
 
