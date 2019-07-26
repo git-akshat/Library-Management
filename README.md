@@ -61,55 +61,61 @@ Password		|
 
 ### Screenshots
 
-* 1.Login Screen
+* Login Screen
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/login1.png)
 
 </br>
 </br>
 
-* 2.Add new Book
+* Add new Book
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/add_book.png)
 
 </br>
 </br>
 
-* 3.Search Book
+* Search Book
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/search_book.png)
 
 </br>
 </br>
 
-* 4.List all Books
+* List all Books
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/list_all_books.png)
 
 </br>
 </br>
 
-* 5.Issue Book-1
+* Issue Book-1
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/issue_book.png)
 
 </br>
 </br>
 
-* 6.Issue Book-2
+* Issue Book-2
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/issue_book_2.png)
 
 </br>
 </br>
 
-* 7.List Issued Books
+* List Issued Books
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/list_issued_books.png)
 
 </br>
 </br>
 
-* 8.List Books to be returned on current Date
+* List Books to be returned on current Date
 
 ![picture alt](https://github.com/git-akshat/Library-Management/blob/master/screenshots/book_to_return.png)
+
+</br>
+</br>
+```typescript
+Reference Link: How to create a cardLayout with netbeans GUI Builder(https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder)
+```
