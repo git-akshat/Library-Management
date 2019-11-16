@@ -736,7 +736,7 @@ public class MainFrame extends javax.swing.JFrame {
                             .addGroup(panelAddBookLayout.createSequentialGroup()
                                 .addComponent(txtCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(comboBoxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(comboBoxCategory, 0, 1, Short.MAX_VALUE))
                             .addComponent(txtAuthorEmail)
                             .addComponent(txtAuthorName)
                             .addComponent(txtQuantity)))

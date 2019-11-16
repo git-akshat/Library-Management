@@ -1,3 +1,15 @@
+#1 Install mariadb on port 3306 and give username as 'root' (default)
+
+#2 give password for 'root' user as 'root'
+
+#3 create a database with name 'bookdb' using following command.
+create database bookdb;
+
+#4 select bookdb
+use bookdb;
+
+#5 copy-paste following lines in your database to create tables.
+
 create table book
 (
 	book_isbn varchar(20) primary key,
@@ -30,3 +42,5 @@ create table book_issue
 	foreign key(usn) references student(usn),
 	foreign key(book_isbn) references book(book_isbn)
 );
+
+#6 we are all set.

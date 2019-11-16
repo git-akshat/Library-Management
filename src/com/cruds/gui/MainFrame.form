@@ -1124,7 +1124,7 @@
                                   <Group type="102" attributes="0">
                                       <Component id="txtCategory" min="-2" pref="115" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="comboBoxCategory" min="-2" pref="91" max="-2" attributes="0"/>
+                                      <Component id="comboBoxCategory" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="txtAuthorEmail" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtAuthorName" alignment="0" max="32767" attributes="0"/>
