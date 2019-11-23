@@ -130,12 +130,12 @@ Password		| Varchar
 
 *	Programming language → java 8
 *	Netbeans IDE
-*	MariaDB(MySqL) [database](https://github.com/git-akshat/Library-Management/blob/master/Databse_Query/bookDB.txt) 
+*	MariaDB(MySqL) [database](https://github.com/git-akshat/Library-Management/blob/master/Database_Query/bookDB.txt) 
 
 ### Reference Link: 
 [How to create a cardLayout with netbeans GUI Builder](https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder)
 
 ### Demo
-* Install MariaDB and follow the steps given in [this](https://github.com/git-akshat/Library-Management/blob/master/Databse_Query/bookDB.txt) file.
+* Install MariaDB and follow the steps given in [this](https://github.com/git-akshat/Library-Management/blob/master/Database_Query/bookDB.txt) file.
 * Now download this project and go to [dist folder](https://github.com/git-akshat/Library-Management/tree/master/dist)
 * Double click on LibraryManagement.jar and here you go :)
