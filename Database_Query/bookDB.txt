@@ -5,7 +5,7 @@
 #3 create a database with name 'bookdb' using following command.
 create database bookdb;
 
-#4 select bookdb
+#4 select bookdb database.
 use bookdb;
 
 #5 copy-paste following lines in your database to create tables.
@@ -43,4 +43,11 @@ create table book_issue
 	foreign key(book_isbn) references book(book_isbn)
 );
 
+create table admin
+(
+	admin_id varchar(20) primary key,
+	password varchar(20)
+);
+
+insert into admin values('akshat','123456');
 #6 we are all set.

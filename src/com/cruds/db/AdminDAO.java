@@ -15,14 +15,13 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Valar Morghulis
+ * @author Akshat Agarwal
  */
 public class AdminDAO {
     
     public boolean isValidAdmin(Admin admin)
     {
         String sql = "select admin_id, password from admin where admin_id = ? and password = ?";
-        boolean flag = false;
         
         try(Connection conn = DBConnectionManager.getConnection())
 	{
@@ -30,15 +29,18 @@ public class AdminDAO {
             ps.setString(1, admin.getId());
             ps.setString(2, admin.getPassword());
             ResultSet rs = ps.executeQuery();
-            if(rs != null && rs.next())
+            while(rs != null && rs.next())
             {
-                flag = true;
+                if(rs.getString(1).equals(admin.getId()) && rs.getString(2).equals(admin.getPassword()))
+                {
+                    return true;
+                }
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(AdminDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return true;
+        return false;
     }
     
 }
